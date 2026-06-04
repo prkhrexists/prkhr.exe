@@ -1,13 +1,9 @@
-import { useState } from 'react';
-import RetroErrorModal from './RetroErrorModal';
-
 interface HeroProps {
-  /** Called when "EXPLORE WORLD" is clicked — parent drives the power-up sequence */
+  /** Called when "EXPLORE WORLD" is clicked — parent handles navigation */
   onExplore: () => void;
 }
 
 export default function Hero({ onExplore }: HeroProps) {
-  const [showErrorModal, setShowErrorModal] = useState(false);
 
   return (
     <>
@@ -34,14 +30,6 @@ export default function Hero({ onExplore }: HeroProps) {
           >
             EXPLORE WORLD <i className="fa-solid fa-chevron-right" />
           </button>
-
-          {/* WATCH TRAILER — easter egg: shows retro error modal */}
-          <button
-            className="btn btn-outline"
-            onClick={() => setShowErrorModal(true)}
-          >
-            WATCH TRAILER
-          </button>
         </div>
 
         <div className="scroll-hint" aria-hidden="true">
@@ -49,12 +37,6 @@ export default function Hero({ onExplore }: HeroProps) {
           <i className="fa-solid fa-chevron-down" />
         </div>
       </section>
-
-      {/* Easter egg modal — rendered in a portal-like position via fixed CSS */}
-      <RetroErrorModal
-        show={showErrorModal}
-        onDismiss={() => setShowErrorModal(false)}
-      />
     </>
   );
 }

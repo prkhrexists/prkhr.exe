@@ -56,11 +56,11 @@ function runTransition(onMidpoint: () => void): void {
   }
   el.classList.remove('overlay-out');
   el.classList.add('overlay-in');
-  setTimeout(onMidpoint, 380);
+  setTimeout(onMidpoint, 150);
   setTimeout(() => {
     el.classList.remove('overlay-in');
     el.classList.add('overlay-out');
-  }, 760);
+  }, 300);
 }
 
 export function ZoneProvider({ children }: { children: ReactNode }) {

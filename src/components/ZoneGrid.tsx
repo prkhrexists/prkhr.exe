@@ -3,36 +3,24 @@ import { ZONES } from '../data/zones';
 
 interface ZoneGridProps {
   onEnterZone: (id: number) => void;
-  /** When true, cards animate from dim → fully lit with staggered glow */
-  isPoweringUp: boolean;
-  /** Called when the last card finishes its power-up animation */
-  onPowerUpComplete?: () => void;
 }
 
 const ZONE_IDS = [1, 2, 3, 4, 5] as const;
 
-/* ── Framer Motion variants ────────────────────────────────
-   dormant : cards are dim, no glow — the "unpowered grid" state
-   powerUp : full opacity + colour glow, applied per-card with a
-             custom delay derived from the card's index prop
-──────────────────────────────────────────────────────────── */
-const cardVariants = {
-  dormant: {
-    opacity: 0.3,
-    filter: 'brightness(0.55) saturate(0.4)',
-  },
-  powerUp: {
-    opacity: 1,
-    filter: 'brightness(1) saturate(1)',
-  },
-};
+function getZoneHint(id: number) {
+  switch (id) {
+    case 1: return "Neural pathways & logic vectors.";
+    case 2: return "Archived execution payloads.";
+    case 3: return "Classified R&D sector.";
+    case 4: return "Corporate ops & ventures.";
+    case 5: return "Combat records & accolades.";
+    default: return "Unknown sector.";
+  }
+}
 
 export default function ZoneGrid({
   onEnterZone,
-  isPoweringUp,
-  onPowerUpComplete,
 }: ZoneGridProps) {
-  const lastIdx = ZONE_IDS.length - 1;
 
   return (
     <div id="zone-section">
@@ -43,8 +31,7 @@ export default function ZoneGrid({
 
       <div className="zone-grid" id="zone-grid">
         {ZONE_IDS.map((id, index) => {
-          const zone      = ZONES[id];
-          const isLast    = index === lastIdx;
+          const zone = ZONES[id];
 
           return (
             <motion.div
@@ -57,23 +44,17 @@ export default function ZoneGrid({
               data-zone-id={id}
               data-zone-key={zone.key}
               /* ── Framer Motion ── */
-              variants={cardVariants}
-              initial="dormant"
-              animate={isPoweringUp ? 'powerUp' : 'dormant'}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{
-                delay:    index * 0.15,
-                duration: 0.5,
-                ease:     'easeOut',
+                delay: index * 0.1,
+                duration: 0.4,
               }}
-              /* Only the last card signals completion */
-              onAnimationComplete={
-                isLast && isPoweringUp ? onPowerUpComplete : undefined
-              }
               onClick={() => onEnterZone(id)}
             >
               <span className="zone-badge">LEVEL {id}</span>
               <h3 className="zone-title">{zone.name}</h3>
-              <p className="zone-desc">{zone.projects[0]?.desc ?? ''}</p>
+              <p className="zone-hint">{getZoneHint(id)}</p>
               <button
                 className="zone-enter-btn"
                 style={{ ['--zone-col' as string]: zone.color }}

@@ -53,9 +53,9 @@ export default function FooterHUD() {
       <div className="hud-section" style={{ alignItems: 'flex-end' }}>
         <span className="hud-label">Let's Connect</span>
         <div className="social-links">
-          <a href="#" aria-label="GitHub"><i className="fa-brands fa-github" /></a>
-          <a href="#" aria-label="LinkedIn"><i className="fa-brands fa-linkedin" /></a>
-          <a href="#" aria-label="Email"><i className="fa-solid fa-envelope" /></a>
+          <a href="https://github.com/prkhrexists" target="_blank" rel="noreferrer" aria-label="GitHub"><i className="fa-brands fa-github" /></a>
+          <a href="https://linkedin.com/in/prkhrexists" target="_blank" rel="noreferrer" aria-label="LinkedIn"><i className="fa-brands fa-linkedin" /></a>
+          <a href="mailto:prkhr.exists@gmail.com" aria-label="Email"><i className="fa-solid fa-envelope" /></a>
         </div>
       </div>
     </footer>

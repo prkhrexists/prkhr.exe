@@ -36,12 +36,8 @@ export default function StatsPanel() {
         <div className="player-avatar">
           <img
             className="player-avatar-img"
-            src="/character_main.png"
+            src="/Screenshot 2026-06-03 172209.png"
             alt="Player avatar"
-            onError={e => {
-              // Fallback to sprite sheet if character_main.png is not found
-              (e.currentTarget as HTMLImageElement).src = '/MainCharacterSpriteSheet.png';
-            }}
           />
         </div>
         <div>
