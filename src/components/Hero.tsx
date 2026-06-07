@@ -7,7 +7,14 @@ export default function Hero({ onExplore }: HeroProps) {
 
   return (
     <>
-      <section id="hero-center" aria-label="Hero introduction">
+      <section id="hero-center" aria-label="Hero introduction" style={{ position: 'relative' }}>
+        {/* Scattered glitch block artifacts */}
+        <div className="hero-glitch-artifact a1" aria-hidden="true" />
+        <div className="hero-glitch-artifact a2" aria-hidden="true" />
+        <div className="hero-glitch-artifact a3" aria-hidden="true" />
+        <div className="hero-glitch-artifact a4" aria-hidden="true" />
+        <div className="hero-glitch-artifact a5" aria-hidden="true" />
+
         <p className="hero-greeting">Hello, I'm</p>
 
         <h1 className="hero-title">
@@ -16,8 +23,7 @@ export default function Hero({ onExplore }: HeroProps) {
 
         <div className="hero-tagline">
           <p>
-            Writing code to solve problems, building hardware to interact with the
-            world, and learning everything in between.
+            Aspiring Software Engineer with a technical focus on Edge-AI deployment and hardware-software integration.
           </p>
         </div>
 
@@ -39,4 +45,5 @@ export default function Hero({ onExplore }: HeroProps) {
       </section>
     </>
   );
+
 }

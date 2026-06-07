@@ -1,12 +1,12 @@
 import React from 'react';
 
 const CONSOLE_LINES = [
-  { text: '> PRKHR.EXE v2.5.0',              delay: '0.0s',  highlight: false },
-  { text: '> Initializing portfolio world…',  delay: '0.9s',  highlight: false },
-  { text: '> Loading experiences…',           delay: '1.8s',  highlight: false },
-  { text: '> Connecting to projects…',        delay: '2.7s',  highlight: false },
-  { text: '> System check… OK',              delay: '3.6s',  highlight: false },
-  { text: '> Welcome, Recruiter_',            delay: '4.5s',  highlight: true  },
+  { text: '> PRKHR.EXE v2.5.0', delay: '0.0s', highlight: false },
+  { text: '> Initializing portfolio world…', delay: '0.9s', highlight: false },
+  { text: '> Loading experiences…', delay: '1.8s', highlight: false },
+  { text: '> Connecting to projects…', delay: '2.7s', highlight: false },
+  { text: '> System check… Done I Guess', delay: '3.6s', highlight: false },
+  { text: '> Welcome, User_', delay: '4.5s', highlight: true },
 ];
 
 export default function SystemConsole() {

@@ -23,10 +23,10 @@ export const ZONES: Record<number, ZoneData> = {
     sub:   'Projects — Level 2',
     intro: "The Hanger stores every machine I've built, shipped, and launched. Each project a testament to execution over ideation.",
     projects: [
-      { title: 'DRONE FLEET OS',   desc: 'Autonomous multi-drone coordination OS for industrial inspection.',          tags: ['ROS2','Python','C++'] },
-      { title: 'PORTFOLIO ENGINE', desc: 'This very world — a 16-bit cyberpunk portfolio built from scratch.',        tags: ['HTML','CSS','JS'] },
-      { title: 'LIFTOS',           desc: 'Smart gym tracker with AI form correction and progressive overload logic.',  tags: ['Swift','CoreML','Firebase'] },
-      { title: 'SIGNAL FORGE',     desc: 'Real-time radio signal processing dashboard for SDR hardware.',              tags: ['Python','GNU Radio','D3.js'] },
+      { title: 'STRIDE', desc: 'Autonomous drone infrastructure inspection with edge-AI object detection.', tags: ['ROS 2', 'YOLOv8s', 'Next.js'] },
+      { title: 'RTK PRECISION GNSS', desc: 'Hardware hacking for centimeter-level positioning via RTKLIB.', tags: ['RTKLIB', 'Python', 'UART'] },
+      { title: 'RESQ LIVE OPS', desc: 'Edge AI perception system for drones in search-and-rescue.', tags: ['YOLOv8', 'OpenCV', 'Supabase'] },
+      { title: 'FORGE', desc: 'Multi-agent AI career command center with zero hallucinations.', tags: ['Python', 'Multi-Agent', 'LLMs'] },
     ],
   },
   3: {
@@ -37,10 +37,10 @@ export const ZONES: Record<number, ZoneData> = {
     sub:   'Research & Development — Level 3',
     intro: 'The Bunker is where prototypes live. Experimental hardware, research papers, and ideas too wild for the main hanger.',
     projects: [
-      { title: 'NEURAL FLIGHT CTRL', desc: 'Reinforcement-learning-based PID replacement for multirotor stabilization.', tags: ['RL','SITL','Python'] },
-      { title: 'BIO-SIGNAL HCI',     desc: 'Human-computer interface using EMG signals for gesture recognition.',        tags: ['EMG','Arduino','TensorFlow'] },
-      { title: 'MESH COMMS PROTO',   desc: 'Low-power mesh communication protocol for remote sensor networks.',          tags: ['LoRa','C','Embedded'] },
-      { title: 'SYNTHETIC DATA GEN', desc: 'Procedural environment simulator for autonomous systems dataset generation.', tags: ['Unity','Python','BlenderAPI'] },
+      { title: 'ISRO IRoC ROBOTICS', desc: 'Modular subsystems for space-grade robotics and sensor fusion.', tags: ['Robotics', 'Sensors'] },
+      { title: 'BOEING AEROMODELLING', desc: '1.2m heavy-lift aircraft with optimized S1223 airfoil.', tags: ['Aerodynamics', 'Design'] },
+      { title: 'TECHFEST IIT BOMBAY', desc: 'Aeromodelling and autonomous robotics challenge finalist.', tags: ['Competition', 'Hardware'] },
+      { title: 'SVNIT SURAT ROBOTICS', desc: 'Real-time hardware-software troubleshooting under constraints.', tags: ['Troubleshooting', 'Embedded'] },
     ],
   },
   4: {
@@ -65,10 +65,10 @@ export const ZONES: Record<number, ZoneData> = {
     sub:   'Competitions & Achievements — Level 5',
     intro: 'The Arena is where skill meets pressure. Hackathons, competitions, and leaderboards — this is the scoreboard.',
     projects: [
-      { title: 'HACKATHON WINS',  desc: '3× national hackathon winner across AI, hardware, and fintech tracks.', tags: ['Awards','AI','Hardware'] },
-      { title: 'DRONE RACING',    desc: 'Top-3 placement in regional FPV drone racing leagues.',                  tags: ['FPV','Racing','Pilots'] },
-      { title: 'RESEARCH AWARDS', desc: 'Best undergraduate research paper — autonomous systems, 2024.',          tags: ['Academic','Paper','2024'] },
-      { title: 'POWERLIFTING PRs',desc: '130 kg bench · 200 kg squat · 230 kg deadlift. Consistency compounds.', tags: ['Strength','PRs','Discipline'] },
+      { title: 'INNOVENT 2026',  desc: 'Grand Prize Winner (₹20K) out of 150+ teams. Developed FORGE multi-agent system.', tags: ['1st Place', 'AI'] },
+      { title: 'GOOGLE HACKATHON', desc: 'Led team to victory among 50+ teams with a production-ready solution in 24h.', tags: ['1st Place', 'Hackathon'] },
+      { title: 'YOUTUBE STRATEGIST', desc: 'Authored 15+ technical scripts reaching 3M+ views on mass-market tech concepts.', tags: ['Content', '3M+ Views'] },
+      { title: 'UAS NMIMS SHIRPUR', desc: 'Technical team member developing control systems for autonomous drones.', tags: ['Robotics', 'Team'] },
     ],
   },
 };

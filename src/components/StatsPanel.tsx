@@ -5,7 +5,7 @@ const STATS: StatItem[] = [
   { label: 'INNOVATION',     icon: 'fa-lightbulb', colorClass: 'c-cyan',   value: 90 },
   { label: 'DEBUGGING',      icon: 'fa-bug',        colorClass: 'c-red',    value: 72 },
   { label: 'STRENGTH',       icon: 'fa-dumbbell',   colorClass: 'c-red',    value: 85 },
-  { label: 'ATTENTION SPAN', icon: 'fa-crosshairs', colorClass: 'c-blue',   value: 35 },
+  { label: 'FOCUS',          icon: 'fa-crosshairs', colorClass: 'c-blue',   value: 35 },
 ];
 
 const TOTAL_SEGS = 10;
@@ -41,8 +41,8 @@ export default function StatsPanel() {
           />
         </div>
         <div>
-          <div className="player-name">PRKHR</div>
-          <div className="player-level">Lv. 21 | Class: AI Tinkerer</div>
+          <div className="player-name">PRAKHAR.EXE</div>
+          <div className="player-level">Lv. 21 | Class: Edge AI Engineer</div>
         </div>
         {/* Music note icon REMOVED per spec */}
       </div>
@@ -50,9 +50,9 @@ export default function StatsPanel() {
       {/* XP Bar */}
       <div className="xp-bar-wrap">
         <div className="xp-track">
-          <div className="xp-fill" style={{ width: '65%' }} />
+          <div className="xp-fill" style={{ width: '75%' }} />
         </div>
-        <div className="xp-label">650 / 1000 XP</div>
+        <div className="xp-label">750 / 1000 XP</div>
       </div>
 
       {/* Stats — mapped from data array */}

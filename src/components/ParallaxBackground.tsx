@@ -44,7 +44,16 @@ export default function ParallaxBackground() {
       {/* Parallax background layers */}
       <div id="parallax-env" aria-hidden="true">
         <div className="bg-layer" id="bg-sky" />
-        <div className="bg-layer" id="bg-far"   ref={bgFarRef} />
+        <div className="bg-layer" id="bg-far"   ref={bgFarRef}>
+          <video
+            src="/bg.mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
+            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+          />
+        </div>
         <div className="bg-layer" id="bg-mid"   ref={bgMidRef} />
         <div className="bg-layer" id="bg-front" ref={bgFrontRef} />
       </div>

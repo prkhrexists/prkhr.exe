@@ -7,12 +7,12 @@ import { useZone } from '../context/ZoneContext';
  * zoneId: 1–5  → enterZone(id) with transition wipe
  */
 const NAV_LINKS: { label: string; zoneId: number | null }[] = [
-  { label: 'Home',         zoneId: null },
-  { label: 'About',        zoneId: 1    }, // → Code Cave
-  { label: 'Projects',     zoneId: 2    }, // → Projects Hanger
-  { label: 'Experience',   zoneId: 3    }, // → The Bunker
-  { label: 'Achievements', zoneId: 4    }, // → YellowDuck HQ
-  { label: 'Contact',      zoneId: 5    }, // → Arena
+  { label: 'Home', zoneId: null },
+  { label: 'About', zoneId: 1 }, // → Code Cave
+  { label: 'Projects', zoneId: 2 }, // → Projects Hanger
+  { label: 'Experience', zoneId: 3 }, // → The Bunker
+  { label: 'Achievements', zoneId: 4 }, // → YellowDuck HQ
+  { label: 'Contact', zoneId: 5 }, // → Arena
 ];
 
 export default function TopNav() {

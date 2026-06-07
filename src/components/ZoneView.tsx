@@ -3,6 +3,7 @@ import { ZONES } from '../data/zones';
 import { useZone } from '../context/ZoneContext';
 import { ZONE_NAV } from '../data/codeCaveData';
 import CodeCaveZone from './CodeCaveZone';
+import YellowDuckZone from './YellowDuckZone';
 
 interface ZoneViewProps {
   activeZoneId: number | null;
@@ -26,8 +27,13 @@ export default function ZoneView({ activeZoneId, onExit }: ZoneViewProps) {
       role="dialog"
       aria-modal="true"
       aria-label="Zone View"
-      className={zone ? 'zone-active' : ''}
-      style={zone ? { backgroundImage: `url('${zone.bg}')` } : {}}
+      className={zone ? `zone-active ${activeZoneId === 4 ? 'zone-hq' : ''}` : ''}
+      style={zone ? {
+        backgroundImage: `url('${zone.bg}')`,
+        backgroundPosition: activeZoneId === 4 ? 'center bottom' : 'center',
+        backgroundSize: activeZoneId === 4 ? '100% 99%' : 'cover',
+        backgroundColor: activeZoneId === 4 ? '#050510' : 'transparent',
+      } : {}}
     >
       {/* ─── header ─────────────────────────────────────────── */}
       <header id="zone-view-header">
@@ -61,26 +67,36 @@ export default function ZoneView({ activeZoneId, onExit }: ZoneViewProps) {
       {/* ─── content ─────────────────────────────────────────── */}
       <div
         id="zone-content-area"
-        /* Zone 1: no scroll, fill height, no padding — grid handles spacing */
-        style={activeZoneId === 1 ? {
-          alignItems: 'stretch',
-          padding: 0,
-          overflow: 'hidden',
-        } : undefined}
+        /* Zone 1: full-height grid, no padding */
+        /* Zone 4: transparent — lets background show through, no overflow clip */
+        style={
+          activeZoneId === 1 ? {
+            alignItems: 'stretch',
+            padding: '2.5rem 3.5rem',
+            overflow: 'hidden',
+          } : activeZoneId === 4 ? {
+            alignItems: 'stretch',
+            padding: '25vh 4vw 4vh 4vw',
+            overflow: 'hidden',
+            background: 'transparent',
+          } : undefined
+        }
+
       >
         {activeZoneId === 1 && <CodeCaveZone />}
+        {activeZoneId === 4 && <YellowDuckZone />}
 
         {/* Zones 2-5: standard panel */}
-        {activeZoneId !== null && activeZoneId !== 1 && (
+        {activeZoneId !== null && activeZoneId !== 1 && activeZoneId !== 4 && (
           <div id="zone-panel" className="panel-glitch">
             <div className="panel-topbar">
               <span className="panel-topbar-title" id="panel-topbar-title">
                 {zone?.sub ?? 'SYSTEM CONSOLE — ZONE DATA LOADED'}
               </span>
               <div className="console-dots">
-                <span className="console-dot dot-red"   />
+                <span className="console-dot dot-red" />
                 <span className="console-dot dot-yellow" />
-                <span className="console-dot dot-green"  />
+                <span className="console-dot dot-green" />
               </div>
             </div>
             <div className="panel-body">
