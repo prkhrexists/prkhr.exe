@@ -6,38 +6,8 @@ import {
   useCallback,
   type ReactNode,
 } from 'react';
+import { HUD_LORE, type HudLore } from '../data/hudLore';
 
-export interface HudLore {
-  location: string;
-  mission: string;
-}
-
-const HUD_LORE: Record<string, HudLore> = {
-  home: {
-    location: 'ROOFTOP SPAWN POINT',
-    mission:  'Explore all zones to know more about me',
-  },
-  1: {
-    location: 'CODE CAVE — LVL 1',
-    mission:  'Analyze skills & expertise',
-  },
-  2: {
-    location: 'PROJECTS HANGER — LVL 2',
-    mission:  'Review deployed projects',
-  },
-  3: {
-    location: 'THE BUNKER — LVL 3',
-    mission:  'Access research & development',
-  },
-  4: {
-    location: 'YELLOWDUCK HQ — LVL 4',
-    mission:  'Investigate ventures & team ops',
-  },
-  5: {
-    location: 'ARENA — LVL 5',
-    mission:  'View competitions & achievements',
-  },
-};
 
 export interface ZoneContextType {
   activeZoneId: number | null;

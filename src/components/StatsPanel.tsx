@@ -1,4 +1,5 @@
 import type { StatItem } from '../types';
+import { SegmentedStatBar } from './ui/SegmentedStatBar';
 
 const STATS: StatItem[] = [
   { label: 'LOGIC',          icon: 'fa-brain',     colorClass: 'c-purple', value: 93 },
@@ -9,24 +10,6 @@ const STATS: StatItem[] = [
 ];
 
 const TOTAL_SEGS = 10;
-
-function StatRow({ stat }: { stat: StatItem }) {
-  const filled = Math.round(stat.value / TOTAL_SEGS);
-  return (
-    <div className="stat-row">
-      <div className={`stat-label ${stat.colorClass}`}>
-        <i className={`fa-solid ${stat.icon}`} />
-        {stat.label}
-      </div>
-      <div className="stat-track">
-        {Array.from({ length: TOTAL_SEGS }).map((_, i) => (
-          <div key={i} className={`stat-seg${i >= filled ? ' empty' : ''}`} />
-        ))}
-      </div>
-      <div className="stat-val">{stat.value}</div>
-    </div>
-  );
-}
 
 export default function StatsPanel() {
   return (
@@ -58,7 +41,15 @@ export default function StatsPanel() {
       {/* Stats — mapped from data array */}
       <div className="stat-rows">
         {STATS.map(stat => (
-          <StatRow key={stat.label} stat={stat} />
+          <SegmentedStatBar
+            key={stat.label}
+            icon={stat.icon}
+            label={stat.label}
+            value={stat.value}
+            segments={TOTAL_SEGS}
+            classPrefix="stat"
+            colorClass={stat.colorClass}
+          />
         ))}
       </div>
 

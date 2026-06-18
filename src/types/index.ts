@@ -19,6 +19,7 @@ export interface ZoneData {
   sub: string;
   intro: string;
   projects: ProjectCard[];
+  hasCustomView: boolean;
 }
 
 export interface InventoryItem {
