@@ -2,13 +2,13 @@ import { useState, useCallback } from 'react';
 import { useTransform, motion } from 'framer-motion';
 import { ZoneProvider, useZone } from './context/ZoneContext';
 import { useScrollDriver }       from './hooks/useScrollDriver';
-import ParallaxBackground        from './components/ParallaxBackground';
-import RootLayout                from './components/RootLayout';
+import ParallaxBackground        from './components/layout/ParallaxBackground';
+import RootLayout                from './components/layout/RootLayout';
 import StatsPanel                from './components/StatsPanel';
 import Hero                      from './components/Hero';
 import SystemConsole             from './components/SystemConsole';
-import ZoneGrid                  from './components/ZoneGrid';
-import ZoneView                  from './components/ZoneView';
+import ZoneGrid                  from './components/zones/ZoneGrid';
+import ZoneView                  from './components/zones/ZoneView';
 import ArcadeWorldMap            from './components/ArcadeWorldMap/ArcadeWorldMap';
 import { playRetroSound }        from './utils/audio';
 
