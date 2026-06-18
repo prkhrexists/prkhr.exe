@@ -23,12 +23,13 @@ export const ZONES: Record<number, ZoneData> = {
     bg:    '/Level2-ProjectHanger.png',
     sub:   'Projects — Level 2',
     intro: "The Hanger stores every machine I've built, shipped, and launched. Each project a testament to execution over ideation.",
-    hasCustomView: false,
+    hasCustomView: true,
     projects: [
-      { title: 'STRIDE', desc: 'Autonomous drone infrastructure inspection with edge-AI object detection.', tags: ['ROS 2', 'YOLOv8s', 'Next.js'] },
-      { title: 'RTK PRECISION GNSS', desc: 'Hardware hacking for centimeter-level positioning via RTKLIB.', tags: ['RTKLIB', 'Python', 'UART'] },
-      { title: 'RESQ LIVE OPS', desc: 'Edge AI perception system for drones in search-and-rescue.', tags: ['YOLOv8', 'OpenCV', 'Supabase'] },
-      { title: 'FORGE', desc: 'Multi-agent AI career command center with zero hallucinations.', tags: ['Python', 'Multi-Agent', 'LLMs'] },
+      { title: 'PORTFOLIO WEBSITE',  desc: 'A gamified portfolio with retro arcade experience and drone delivery system.', tags: ['Next.js', 'Tailwind', 'Phaser.js'], liveUrl: '#', githubUrl: '#' },
+      { title: 'CS50 PROJECTS',      desc: 'Harvard CS50x capstone — full-stack web app, C algorithms, SQL database design.', tags: ['C', 'Python', 'SQL', 'Flask'], liveUrl: '#', githubUrl: '#' },
+      { title: 'FLUTTER APP',        desc: 'Cross-platform mobile app with real-time sync and offline-first architecture.', tags: ['Flutter', 'Dart', 'Firebase'], liveUrl: '#', githubUrl: '#' },
+      { title: 'HACKATHON PROJECT',  desc: 'Award-winning cybersecurity submission with live vulnerability scanner.', tags: ['React', 'Node.js', 'Firebase'], liveUrl: '#', githubUrl: '#' },
+      { title: 'CYBERSHIELD 2026',   desc: 'AI-powered enterprise threat detection using neural networks trained on live telemetry.', tags: ['Python', 'TensorFlow', 'Docker'], liveUrl: '#', githubUrl: '#' },
     ],
   },
   3: {
@@ -68,7 +69,7 @@ export const ZONES: Record<number, ZoneData> = {
     bg:    '/Zone5-arena.png',
     sub:   'Competitions & Achievements — Level 5',
     intro: 'The Arena is where skill meets pressure. Hackathons, competitions, and leaderboards — this is the scoreboard.',
-    hasCustomView: false,
+    hasCustomView: true,
     projects: [
       { title: 'INNOVENT 2026',  desc: 'Grand Prize Winner (₹20K) out of 150+ teams. Developed FORGE multi-agent system.', tags: ['1st Place', 'AI'] },
       { title: 'GOOGLE HACKATHON', desc: 'Led team to victory among 50+ teams with a production-ready solution in 24h.', tags: ['1st Place', 'Hackathon'] },

@@ -19,7 +19,7 @@ export default function StatsPanel() {
         <div className="player-avatar">
           <img
             className="player-avatar-img"
-            src="/Screenshot 2026-06-03 172209.png"
+            src="/screenshot-1.png"
             alt="Player avatar"
           />
         </div>

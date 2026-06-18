@@ -1,0 +1,125 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   RESET & ROOT TOKENS
+================================================================ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --col-bg: #050510;
+  --col-panel: rgba(8, 8, 20, 0.92);
+  --col-border: #2a2a45;
+  --col-yellow: #FFD700;
+  --col-orange: #FFA500;
+  --col-green: #00ff88;
+  --col-cyan: #00ffff;
+  --col-purple: #9b5de5;
+  --col-red: #ef476f;
+  --col-gold: #ffd166;
+  --col-blue: #118ab2;
+  --col-white: #e8e8f0;
+  --font-pixel: 'Press Start 2P', cursive;
+  --font-term: 'VT323', monospace;
+
+  --sprite-frame-w: 64px;
+  --sprite-frame-h: 64px;
+  --sprite-walk-frames: 4;
+  --sprite-walk-row-y: 0px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--col-bg);
+  /* CRT dot-matrix / grid pattern */
+  background-image:
+    radial-gradient(circle, rgba(0, 255, 255, 0.07) 1px, transparent 1px),
+    radial-gradient(circle, rgba(255, 0, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(rgba(0, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 4px 4px, 8px 8px, 32px 32px, 32px 32px;
+  background-position: 0 0, 2px 2px, 0 0, 0 0;
+  color: var(--col-white);
+  font-family: var(--font-term);
+  overflow: hidden;
+  height: 100vh;
+  position: relative;
+}
+
+/* Semi-transparent scanline overlay across entire viewport */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent 0px,
+    transparent 3px,
+    rgba(0, 0, 0, 0.18) 3px,
+    rgba(0, 0, 0, 0.18) 4px
+  );
+  animation: scanline-drift 8s linear infinite;
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: #111;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--col-yellow);
+}
+
+/* ============================================================
+   UTILITIES
+============================================================ */
+.hidden {
+  display: none !important;
+}
+
+.pixel-glow-yellow {
+  filter: drop-shadow(0 0 6px var(--col-yellow));
+}
+
+.pixel-glow-cyan {
+  filter: drop-shadow(0 0 6px var(--col-cyan));
+}
+
+.c-purple {
+  color: var(--col-purple);
+}
+
+.c-cyan {
+  color: var(--col-cyan);
+}
+
+.c-red {
+  color: var(--col-red);
+}
+
+.c-gold {
+  color: var(--col-gold);
+}
+
+.c-blue {
+  color: var(--col-blue);
+}

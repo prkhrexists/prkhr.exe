@@ -1,0 +1,430 @@
+﻿
+> .rpg-root {
+    display: grid;
+    grid-template-columns: 40% minmax(0, 1fr);
+    grid-template-rows: 55% minmax(0, 1fr);
+    gap: 1.25rem;
+    height: 100%;
+    overflow: hidden;
+    background: transparent;
+    padding: 0;
+  }
+  
+  /* Shared Grid Box */
+  .rpg-grid-box {
+    border: 1px solid rgba(168, 85, 247, 0.6);
+    box-shadow: 0 0 16px rgba(168, 85, 247, 0.25), 0 8px 32px rgba(0, 0, 0, 0.6);
+    background: rgba(8, 8, 20, 0.88);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    padding: 1rem;
+    overflow: visible;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    border-radius: 4px;
+    animation: rpg-box-glitch 6s steps(1, end) infinite;
+  }
+  
+  /* stagger glitch timing per panel so they don't all flash at once */
+  .rpg-grid-box:nth-child(1) { animation-delay: 0s; }
+  .rpg-grid-box:nth-child(2) { animation-delay: -2.1s; }
+  .rpg-grid-box:nth-child(3) { animation-delay: -3.7s; }
+  .rpg-grid-box:nth-child(4) { animation-delay: -1.4s; }
+  
+  @keyframes rpg-box-glitch {
+    /* ÔöÇÔöÇ idle ÔöÇÔöÇ */
+    0%,   58%  { border-color: rgba(168,85,247,0.6); box-shadow: 0 0 16px rgba(168,85,247,0.25), 0 8px 32px 
+rgba(0,0,0,0.6); }
+    /* ÔöÇÔöÇ cyan spike ÔöÇÔöÇ */
+    59%         { border-color: rgba(0,255,255,0.95); box-shadow: -3px 0 0 rgba(0,255,255,0.7), 3px 0 0 
+rgba(0,255,255,0.4), 0 0 22px rgba(0,255,255,0.5), 0 8px 32px rgba(0,0,0,0.6); }
+    60%         { border-color: rgba(168,85,247,0.5); box-shadow: 0 0 8px rgba(168,85,247,0.2), 0 8px 32px 
+rgba(0,0,0,0.6); }
+    /* ÔöÇÔöÇ magenta spike ÔöÇÔöÇ */
+    72%         { border-color: rgba(255,0,255,0.95); box-shadow: 4px 0 0 rgba(255,0,255,0.7), -4px 0 0 
+rgba(255,0,255,0.4), 0 0 26px rgba(255,0,255,0.5), 0 8px 32px rgba(0,0,0,0.6); }
+    72.8%       { border-color: rgba(168,85,247,0.6); box-shadow: 0 0 16px rgba(168,85,247,0.25), 0 8px 32px 
+rgba(0,0,0,0.6); }
+    /* ÔöÇÔöÇ yellow flicker ÔöÇÔöÇ */
+    85%         { border-color: rgba(255,220,0,0.9);  box-shadow: 0 -3px 0 rgba(255,220,0,0.6), 0 3px 0 
+rgba(255,220,0,0.4), 0 0 18px rgba(255,220,0,0.4), 0 8px 32px rgba(0,0,0,0.6); }
+    85.6%       { border-color: rgba(168,85,247,0.6); box-shadow: 0 0 16px rgba(168,85,247,0.25), 0 8px 32px 
+rgba(0,0,0,0.6); }
+    /* ÔöÇÔöÇ double-flash ÔöÇÔöÇ */
+    93%         { border-color: rgba(0,255,255,0.8);  box-shadow: -2px 0 0 rgba(0,255,255,0.6), 0 0 14px 
+rgba(0,255,255,0.4), 0 8px 32px rgba(0,0,0,0.6); }
+    93.4%       { border-color: rgba(255,0,255,0.8);  box-shadow:  2px 0 0 rgba(255,0,255,0.6), 0 0 14px 
+rgba(255,0,255,0.4), 0 8px 32px rgba(0,0,0,0.6); }
+    93.8%       { border-color: rgba(168,85,247,0.6); box-shadow: 0 0 16px rgba(168,85,247,0.25), 0 8px 32px 
+rgba(0,0,0,0.6); }
+    100%        { border-color: rgba(168,85,247,0.6); box-shadow: 0 0 16px rgba(168,85,247,0.25), 0 8px 32px 
+rgba(0,0,0,0.6); }
+  }
+  
+  /* Corner glitch shard pseudo-elements ÔÇö flash on top-right and bottom-left corners */
+  .rpg-grid-box::before {
+    content: '';
+    position: absolute;
+    top: -3px;
+    right: 12px;
+    width: 24px;
+    height: 3px;
+    background: rgba(0,255,255,0.9);
+    z-index: 30;
+    pointer-events: none;
+    animation: rpg-shard-top 6s steps(1, end) infinite;
+    box-shadow: 0 0 6px rgba(0,255,255,0.9);
+  }
+  
+  .rpg-grid-box::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 18px;
+    width: 16px;
+    height: 3px;
+    background: rgba(255,0,255,0.9);
+    z-index: 30;
+    pointer-events: none;
+    animation: rpg-shard-bot 6s steps(1, end) infinite;
+    box-shadow: 0 0 6px rgba(255,0,255,0.9);
+  }
+  
+  .rpg-grid-box:nth-child(2)::before { animation-delay: -2.1s; right: auto; left: 20px; background: 
+rgba(255,220,0,0.9); box-shadow: 0 0 6px rgba(255,220,0,0.9); }
+  .rpg-grid-box:nth-child(2)::after  { animation-delay: -2.1s; left: auto; right: 22px; background: 
+rgba(0,255,255,0.9); box-shadow: 0 0 6px rgba(0,255,255,0.9); }
+  .rpg-grid-box:nth-child(3)::before { animation-delay: -3.7s; right: auto; left: 30px; }
+  .rpg-grid-box:nth-child(3)::after  { animation-delay: -3.7s; left: auto; right: 14px; }
+  .rpg-grid-box:nth-child(4)::before { animation-delay: -1.4s; background: rgba(255,0,255,0.9); box-shadow: 0 0 6px 
+rgba(255,0,255,0.9); }
+  .rpg-grid-box:nth-child(4)::after  { animation-delay: -1.4s; background: rgba(255,220,0,0.9); box-shadow: 0 0 6px 
+rgba(255,220,0,0.9); }
+  
+  @keyframes rpg-shard-top {
+    0%,   57%   { opacity: 0; transform: scaleX(1); }
+    58%          { opacity: 1; transform: scaleX(1.6); }
+    58.5%        { opacity: 0.5; transform: scaleX(0.7); }
+    59%          { opacity: 1; transform: scaleX(1); }
+    59.5%, 71.5% { opacity: 0; }
+    72%          { opacity: 1; transform: scaleX(1.3); }
+    72.5%        { opacity: 0; }
+    84.5%, 85%   { opacity: 0; }
+    85.1%        { opacity: 1; transform: scaleX(1.1); }
+    85.5%        { opacity: 0; }
+    92.8%        { opacity: 0; }
+    93%          { opacity: 1; transform: scaleX(0.9); }
+    93.2%        { opacity: 0; }
+    93.7%        { opacity: 1; }
+    93.9%, 100%  { opacity: 0; }
+  }
+  
+  @keyframes rpg-shard-bot {
+    0%,   58.2% { opacity: 0; }
+    58.3%        { opacity: 1; transform: scaleX(1.4); }
+    58.8%        { opacity: 0; }
+    71.8%        { opacity: 1; transform: scaleX(1.2); }
+    72.3%        { opacity: 0; }
+    85.3%        { opacity: 1; }
+    85.7%        { opacity: 0; }
+    93.1%        { opacity: 1; transform: scaleX(1.5); }
+    93.6%        { opacity: 0; }
+    100%         { opacity: 0; }
+  }
+  
+  /* ├óÔÇó┬É├óÔÇó┬É├óÔÇó┬É├óÔÇó┬É├óÔÇó┬É├óÔÇó┬É├óÔÇó┬É├óÔÇó┬É├óÔÇó┬É├óÔÇó┬É├óÔÇó┬É├óÔÇó┬É├óÔÇó┬É├óÔÇó┬É├óÔÇó┬É├óÔÇó┬É├ó
+ÔÇó┬É├óÔÇó┬É├óÔÇó┬É├óÔÇó┬É├óÔÇó┬É├óÔÇó┬É├óÔÇó┬É├óÔÇó┬É├óÔÇó┬É├óÔÇó┬É├óÔÇó┬É├óÔÇó┬É├óÔÇó┬É├óÔÇó┬É├óÔÇó┬É├óÔÇó┬É├óÔÇó┬É├ó
+ÔÇó┬É├óÔÇó┬É├óÔÇó┬É├óÔÇó┬É├óÔÇó┬É├óÔÇó┬É├óÔÇó┬É├óÔÇó┬É├óÔÇó┬É├óÔÇó┬É├óÔÇó┬É├óÔÇó┬É├óÔÇó┬É├óÔÇó┬É├óÔÇó┬É├óÔÇó┬É├óÔÇó┬É├ó
+ÔÇó┬É├óÔÇó┬É├óÔÇó┬É├óÔÇó┬É├óÔÇó┬É├óÔÇó┬É├óÔÇó┬É├óÔÇó┬É├óÔÇó┬É
+     Grid Areas
+  ├óÔÇó┬É├óÔÇó┬É├óÔÇó┬É├óÔÇó┬É├óÔÇó┬É├óÔÇó┬É├óÔÇó┬É├óÔÇó┬É├óÔÇó┬É├óÔÇó┬É├óÔÇó┬É├óÔÇó┬É├óÔÇó┬É├óÔÇó┬É├óÔÇó┬É├óÔÇó┬É├óÔÇó
+┬É├óÔÇó┬É├óÔÇó┬É├óÔÇó┬É├óÔÇó┬É├óÔÇó┬É├óÔÇó┬É├óÔÇó┬É├óÔÇó┬É├óÔÇó┬É├óÔÇó┬É├óÔÇó┬É├óÔÇó┬É├óÔÇó┬É├óÔÇó┬É├óÔÇó┬É├óÔÇó┬É├óÔÇó
+┬É├óÔÇó┬É├óÔÇó┬É├óÔÇó┬É├óÔÇó┬É├óÔÇó┬É├óÔÇó┬É├óÔÇó┬É├óÔÇó┬É├óÔÇó┬É├óÔÇó┬É├óÔÇó┬É├óÔÇó┬É├óÔÇó┬É├óÔÇó┬É├óÔÇó┬É├óÔÇó┬É├óÔÇó
+┬É├óÔÇó┬É├óÔÇó┬É├óÔÇó┬É├óÔÇó┬É├óÔÇó┬É├óÔÇó┬É├óÔÇó┬É├óÔÇó┬É */
+  .rpg-profile-area {
+    display: grid;
+    grid-template-columns: 52% 48%;
+    gap: 0;
+    padding: 0;
+    /* Let inner columns handle spacing */
+  }
+  
+  
+  /* ├óÔÇØÔé¼├óÔÇØÔé¼ Left Side (Avatar Box) ├óÔÇØÔé¼├óÔÇØÔé¼├óÔÇØÔé¼├óÔÇØÔé¼├óÔÇØÔé¼├óÔÇØÔé¼├óÔÇØÔé¼├óÔÇØÔé¼├óÔÇØÔé¼├ó
+ÔÇØÔé¼├óÔÇØÔé¼├óÔÇØÔé¼├óÔÇØÔé¼├óÔÇØÔé¼├óÔÇØÔé¼├óÔÇØÔé¼├óÔÇØÔé¼├óÔÇØÔé¼├óÔÇØÔé¼├óÔÇØÔé¼├óÔÇØÔé¼├óÔÇØÔé¼├óÔÇØÔé¼├óÔÇØÔé¼├
+óÔÇØÔé¼├óÔÇØÔé¼├óÔÇØÔé¼├óÔÇØÔé¼├óÔÇØÔé¼├óÔÇØÔé¼├óÔÇØÔé¼├óÔÇØÔé¼├óÔÇØÔé¼ */
+  .rpg-avatar-box {
+    position: relative;
+    overflow: hidden;
+    border-right: 1px solid #a855f7;
+    /* Inner cyberpunk border */
+    background: linear-gradient(180deg, rgba(15, 5, 35, 0.7) 0%, rgba(5, 5, 20, 0.9) 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .rpg-avatar-img {
+    position: relative;
+    /* Ensure it stacks correctly above the blueprint bg */
+    z-index: 1;
+    max-width: 100%;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: top center;
+    display: block;
+    /* subtle breathing animation */
+    animation: rpg-breathe 4s ease-in-out infinite;
+    filter: drop-shadow(0 0 18px rgba(155, 93, 229, 0.4));
+  }
+  
+  @keyframes rpg-breathe {
+  
+    0%,
+    100% {
+      transform: translateY(0px) scale(1);
+    }
+  
+    50% {
+      transform: translateY(-5px) scale(1.008);
+    }
+  }
+  
+  /* Skeletal blueprint background */
+  .rpg-blueprint-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background-image:
+      linear-gradient(rgba(14, 165, 233, 0.4) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(14, 165, 233, 0.4) 1px, transparent 1px);
+    background-size: 20px 20px;
+    background-position: center;
+  
+    /* Mask sweeping animation */
+    -webkit-mask-image: linear-gradient(to bottom,
+        transparent 0%,
+        black 20%,
+        black 80%,
+        transparent 100%);
+    mask-image: linear-gradient(to bottom,
+        transparent 0%,
+        black 20%,
+        black 80%,
+        transparent 100%);
+    -webkit-mask-size: 100% 200%;
+    mask-size: 100% 200%;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    animation: rpg-blueprint-scan 3s linear infinite;
+  }
+  
+  @keyframes rpg-blueprint-scan {
+    0% {
+      -webkit-mask-position: 0 -100%;
+      mask-position: 0 -100%;
+    }
+  
+    100% {
+      -webkit-mask-position: 0 100%;
+      mask-position: 0 100%;
+    }
+  }
+  
+  /* CRT scanlines over portrait */
+  .rpg-avatar-box::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 2;
+    background: repeating-linear-gradient(0deg, transparent, transparent 2px,
+        rgba(0, 0, 0, 0.14) 2px, rgba(0, 0, 0, 0.14) 4px);
+  }
+  
+  /* bottom glow */
+  .rpg-avatar-box::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 40%;
+    background: linear-gradient(0deg, rgba(155, 93, 229, 0.25) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 1;
+  }
+  
+  /* LIVE FEED badge */
+  .rpg-live-badge {
+    position: absolute;
+    bottom: 8px;
+    left: 8px;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background: rgba(0, 0, 0, 0.75);
+    border: 1px solid #333;
+    padding: 2px 7px;
+  }
+  
+  .rpg-live-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--col-red);
+    box-shadow: 0 0 6px var(--col-red);
+    animation: rpg-live-blink 1.2s step-end infinite;
+  }
+  
+  @keyframes rpg-live-blink {
+  
+    0%,
+    100% {
+      opacity: 1;
+    }
+  
+    50% {
+      opacity: 0.2;
+    }
+  }
+  
+  .rpg-live-text {
+    font-family: var(--font-pixel);
+    font-size: 0.3rem;
+    color: #888;
+    letter-spacing: 0.06em;
+  }
+  
+  /* ├óÔÇØÔé¼├óÔÇØÔé¼ Right Side (Stats Box) ├óÔÇØÔé¼├óÔÇØÔé¼├óÔÇØÔé¼├óÔÇØÔé¼├óÔÇØÔé¼├óÔÇØÔé¼├óÔÇØÔé¼├óÔÇØÔé¼├óÔÇØÔé¼├ó
+ÔÇØÔé¼├óÔÇØÔé¼├óÔÇØÔé¼├óÔÇØÔé¼├óÔÇØÔé¼├óÔÇØÔé¼├óÔÇØÔé¼├óÔÇØÔé¼├óÔÇØÔé¼├óÔÇØÔé¼├óÔÇØÔé¼├óÔÇØÔé¼├óÔÇØÔé¼├óÔÇØÔé¼├óÔÇØÔé¼├
+óÔÇØÔé¼├óÔÇØÔé¼├óÔÇØÔé¼├óÔÇØÔé¼├óÔÇØÔé¼├óÔÇØÔé¼├óÔÇØÔé¼├óÔÇØÔé¼├óÔÇØÔé¼ */
+  /* ÔÇö Right Side (Stats Box) 
+ÔÇöÔÇöÔÇöÔÇöÔÇöÔÇöÔÇöÔÇöÔÇöÔÇöÔÇöÔÇöÔÇöÔÇöÔÇöÔÇöÔÇöÔÇöÔÇöÔÇöÔÇöÔÇöÔÇöÔÇöÔÇöÔÇöÔÇöÔÇöÔÇöÔÇöÔÇöÔÇöÔÇö */
+  .rpg-stats-box {
+    display: flex;
+    flex-direction: column;
+    padding: 0.7rem 0.65rem;
+    gap: 0.5rem;
+    overflow: hidden;
+    background: rgba(6, 6, 18, 0.92);
+  }
+  
+  /* H1 Name */
+  .rpg-name-row {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    flex-wrap: wrap;
+  }
+  
+  .rpg-h1-name {
+    font-family: var(--font-pixel);
+    font-size: 0.75rem;
+    /* slightly larger to fit the ratio */
+    color: #fff;
+    letter-spacing: 0.08em;
+    white-space: nowrap;
+    margin: 0;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+  }
+  
+  /* Subtitle */
+  .rpg-subtitle {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    margin-bottom: 0.2rem;
+  }
+  
+  .rpg-level-text {
+    font-family: var(--font-pixel);
+    font-size: 0.45rem;
+    color: var(--col-yellow);
+  }
+  
+  .rpg-role-text {
+    font-family: var(--font-term);
+    font-size: 0.95rem;
+    color: #bbb;
+    line-height: 1.4;
+  }
+  
+  /* XP bar */
+  .rpg-xp-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+  
+  .rpg-xp-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .rpg-xp-label,
+  .rpg-xp-nums {
+    font-family: var(--font-pixel);
+    font-size: 0.33rem;
+    color: #888;
+  }
+  
+  .rpg-xp-track {
+    display: flex;
+    gap: 2px;
+    height: 7px;
+  }
+  
+  .rpg-xp-seg {
+    flex: 1;
+    background: #1a1a2e;
+    border: 1px solid #2a2a40;
+  }
+  
+  .rpg-xp-seg.filled {
+    background: linear-gradient(90deg, #FFA500, #FFD700);
+    border-color: #FFD700;
+    box-shadow: 0 0 4px rgba(255, 215, 0, 0.55);
+  }
+  
+  /* divider */
+  .rpg-divider {
+    height: 1px;
+    background: #2a2a45;
+    flex-shrink: 0;
+  }
+  
+  /* stat bars */
+  .rpg-stats-block {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    /* Increased gap */
+    flex-grow: 1;
+    /* Expand to fill empty achievement space */
+    justify-content: center;
+    /* Center them dynamically */
+  }
+  
+  .rpg-stat-row {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-family: var(--font-pixel);
+    font-size: 0.33rem;
+  }
+  
+  .rpg-stat-label {
+    width: 90px;
+    flex-shrink: 0;
+    color: #ccc;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  
+
+

@@ -1,0 +1,432 @@
+/* ============================================================
+   CODE CAVE — ZONE 1
+============================================================ */
+.rpg-root {
+  display: grid;
+  grid-template-columns: 40% minmax(0, 1fr);
+  grid-template-rows: 55% minmax(0, 1fr);
+  gap: 1.25rem;
+  height: 100%;
+  overflow: hidden;
+  padding: 0;
+}
+
+/* ── Panels ── */
+.rpg-grid-box {
+  background: rgba(8, 8, 20, 0.88);
+  border: 1px solid rgba(168, 85, 247, 0.6);
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 16px rgba(168, 85, 247, 0.15), 0 8px 32px rgba(0, 0, 0, 0.6);
+}
+
+.rpg-panel-hdr {
+  background: rgba(0, 0, 0, 0.6);
+  border-bottom: 1px solid rgba(168, 85, 247, 0.4);
+  padding: 0.4rem 0.75rem;
+  font-family: var(--font-pixel);
+  font-size: 0.55rem;
+  color: #aaa;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.rpg-panel-icon {
+  color: var(--col-yellow);
+}
+
+/* ── Top-Left: Player Status ── */
+.rpg-player-status-panel {
+  padding: 0;
+}
+
+.ps-split-layout {
+  display: flex;
+  flex: 1;
+  padding: 1rem;
+  gap: 2rem;
+}
+
+.ps-left-col {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.ps-right-col {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  justify-content: center;
+}
+
+.ps-card-row {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.ps-avatar {
+  width: 90px;
+  height: 90px;
+  border: 1px solid rgba(168, 85, 247, 0.6);
+  background: linear-gradient(180deg, rgba(15, 5, 35, 0.7) 0%, rgba(5, 5, 20, 0.9) 100%);
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.ps-avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: relative;
+  z-index: 1;
+}
+
+.ps-avatar-scanlines {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.2) 2px, rgba(0,0,0,0.2) 4px);
+  pointer-events: none;
+}
+
+.ps-identity {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  flex: 1;
+}
+
+.ps-name {
+  font-family: var(--font-pixel);
+  font-size: 0.8rem;
+  color: #fff;
+  letter-spacing: 0.08em;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+}
+
+.ps-class {
+  font-family: var(--font-term);
+  font-size: 0.95rem;
+  color: #bbb;
+}
+
+/* XP Bar Wrapper */
+.ps-xp-wrap {
+  margin: 0 1rem;
+}
+
+.ps-xp-header {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-pixel);
+  font-size: 0.35rem;
+  color: #888;
+  margin-bottom: 4px;
+}
+
+.ps-xp-track {
+  display: flex;
+  gap: 2px;
+  height: 6px;
+}
+
+.ps-xp-seg {
+  flex: 1;
+  background: #1a1a2e;
+  border: 1px solid #2a2a40;
+}
+
+.ps-xp-seg.filled {
+  background: linear-gradient(90deg, #FFA500, #FFD700);
+  border-color: #FFD700;
+  box-shadow: 0 0 4px rgba(255, 215, 0, 0.55);
+}
+
+.rpg-divider {
+  height: 1px;
+  background: rgba(168, 85, 247, 0.2);
+  margin: 1rem;
+  flex-shrink: 0;
+}
+
+/* Stat Bars */
+.ps-stats-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0 1rem;
+}
+
+.ps-stat-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.ps-stat-label {
+  font-family: var(--font-pixel);
+  font-size: 0.35rem;
+  color: #ccc;
+  width: 90px;
+  flex-shrink: 0;
+}
+
+.ps-stat-track {
+  display: flex;
+  gap: 2px;
+  flex: 1;
+  height: 6px;
+}
+
+.ps-stat-seg {
+  flex: 1;
+  background: #1a1a2e;
+  border: 1px solid #2a2a40;
+}
+
+.ps-stat-val {
+  font-family: var(--font-pixel);
+  font-size: 0.35rem;
+  color: #fff;
+  width: 24px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+/* System Status */
+.ps-sys-status {
+  padding: 0 1rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.ps-sys-hdr {
+  font-family: var(--font-pixel);
+  font-size: 0.4rem;
+  color: #888;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.ps-sys-body {
+  display: flex;
+  gap: 1rem;
+}
+
+.ps-sys-lines {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-family: var(--font-term);
+  font-size: 0.85rem;
+  flex: 1;
+}
+
+.ps-sys-row {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.ps-sys-chevron {
+  color: var(--col-green);
+}
+
+.ps-sys-key {
+  color: #888;
+}
+
+/* ── Top-Right: Terminal ── */
+.rpg-terminal-area {
+  padding: 0;
+}
+
+.rpg-terminal {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.rpg-term-bar {
+  background: rgba(0, 0, 0, 0.6);
+  border-bottom: 1px solid rgba(168, 85, 247, 0.4);
+  padding: 0.4rem 0.75rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.rpg-term-title-label, .rpg-term-version {
+  font-family: var(--font-pixel);
+  font-size: 0.45rem;
+  color: #aaa;
+}
+
+.rpg-term-dots {
+  display: flex;
+  gap: 5px;
+}
+
+.rpg-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+.rpg-dot-r { background: #ff5f57; }
+.rpg-dot-y { background: #febc2e; }
+.rpg-dot-g { background: #28c840; }
+
+.rpg-term-body {
+  flex: 1;
+  padding: 1rem;
+  font-family: var(--font-term);
+  font-size: 1rem;
+  color: var(--col-green);
+  overflow-y: auto;
+  position: relative;
+}
+
+.rpg-term-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.rpg-t-highlight {
+  color: var(--col-yellow);
+}
+
+.rpg-t-error {
+  color: var(--col-red);
+}
+
+.rpg-t-input-row {
+  display: flex;
+  align-items: center;
+  margin-top: 0.5rem;
+}
+
+.rpg-cursor {
+  width: 8px;
+  height: 1.1rem;
+  background: var(--col-green);
+  animation: cursor-blink 1s step-end infinite;
+  margin-left: 2px;
+}
+
+@keyframes cursor-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.rpg-t-hidden-input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ── Bottom-Left: About Me ── */
+.rpg-about-panel {
+  padding: 0;
+}
+
+.about-inner {
+  padding: 1.5rem;
+  overflow-y: auto;
+}
+
+.about-p {
+  font-family: var(--font-term);
+  font-size: 1.1rem;
+  color: #ccc;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.about-objective {
+  font-family: var(--font-term);
+  font-size: 1rem;
+  color: #fff;
+  background: rgba(168, 85, 247, 0.1);
+  border-left: 2px solid rgba(168, 85, 247, 0.6);
+  padding: 0.75rem 1rem;
+  margin-top: 1.5rem;
+}
+
+.rpg-obj-kw {
+  color: rgba(168, 85, 247, 0.9);
+  font-family: var(--font-pixel);
+  font-size: 0.45rem;
+  letter-spacing: 0.1em;
+}
+
+/* ── Bottom-Right: Tech Stack ── */
+.rpg-tech-area {
+  padding: 0;
+}
+
+.rpg-tech-table {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  overflow-y: auto;
+}
+
+.rpg-tech-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.rpg-tech-cat {
+  font-family: var(--font-pixel);
+  font-size: 0.4rem;
+  width: 80px;
+  flex-shrink: 0;
+  text-align: right;
+  padding-top: 0.4rem;
+}
+
+.rpg-tech-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  flex: 1;
+}
+
+.rpg-tech-card {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid var(--tc);
+  border-radius: 20px;
+  padding: 0.3rem 0.75rem;
+  font-family: var(--font-term);
+  font-size: 0.85rem;
+  color: #fff;
+}
+
+.rpg-ti {
+  font-size: 1rem;
+}
+
+/* Small adjustments for responsiveness */
+@media (max-width: 1024px) {
+  .rpg-root {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto auto;
+    overflow-y: auto;
+  }
+}

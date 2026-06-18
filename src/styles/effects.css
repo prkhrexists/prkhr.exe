@@ -1,0 +1,175 @@
+/* ============================================================
+   GLITCH AND EFFECTS
+============================================================ */
+
+.glitch-wrap {
+  position: relative;
+  display: inline-block;
+}
+
+.glitch-wrap::before,
+.glitch-wrap::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  font-family: var(--font-pixel);
+  font-size: inherit;
+  letter-spacing: inherit;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Cyan layer — shifts left, torn horizontal slices */
+.glitch-wrap::before {
+  color: rgba(0, 255, 255, 0.95);
+  /* Add a white core so the glitch looks "torn" white */
+  text-shadow: 2px 0 0 #fff;
+  animation: glitch-before 5s steps(1, end) infinite;
+  animation-delay: -0.5s;
+}
+
+/* Magenta layer — shifts right */
+.glitch-wrap::after {
+  color: rgba(255, 0, 255, 0.95);
+  text-shadow: -2px 0 0 #fff;
+  animation: glitch-after 5s steps(1, end) infinite;
+  animation-delay: -0.5s;
+}
+
+/* UI GLITCH EFFECT (FOR EXPLORE ANIMATION) */
+.ui-glitch {
+  animation: ui-shake 0.4s cubic-bezier(.36, .07, .19, .97) both;
+  filter: hue-rotate(90deg) contrast(150%) saturate(200%);
+}
+
+/* GLITCH ARTIFACTS — scattered decorative neon blocks */
+
+/* Left sidebar — teal glitch shard, top edge */
+.left-sidebar::before {
+  content: '';
+  position: absolute;
+  top: -4px;
+  right: 18px;
+  width: 28px;
+  height: 5px;
+  background: rgba(0, 255, 255, 0.85);
+  z-index: 20;
+  pointer-events: none;
+  animation: artifact-blink-cyan 3.2s steps(1, end) infinite;
+  box-shadow: 0 0 8px rgba(0, 255, 255, 0.9);
+}
+
+/* Left sidebar — magenta shard, bottom edge */
+.left-sidebar::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 24px;
+  width: 18px;
+  height: 4px;
+  background: rgba(255, 0, 255, 0.85);
+  z-index: 20;
+  pointer-events: none;
+  animation: artifact-blink-magenta 4.5s steps(1, end) infinite;
+  box-shadow: 0 0 8px rgba(255, 0, 255, 0.9);
+}
+
+/* Right sidebar — yellow glitch shard, top edge */
+.right-sidebar::before {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: 22px;
+  width: 22px;
+  height: 4px;
+  background: rgba(255, 255, 0, 0.9);
+  z-index: 20;
+  pointer-events: none;
+  animation: artifact-blink-yellow 2.8s steps(1, end) infinite;
+  box-shadow: 0 0 8px rgba(255, 255, 0, 0.9);
+}
+
+/* Right sidebar — cyan shard, bottom edge */
+.right-sidebar::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  right: 20px;
+  width: 30px;
+  height: 5px;
+  background: rgba(0, 255, 255, 0.80);
+  z-index: 20;
+  pointer-events: none;
+  animation: artifact-blink-cyan 5.1s steps(1, end) infinite;
+  animation-delay: -1.8s;
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.85);
+}
+
+/* Additional inline glitch block artifacts anchored inside hero */
+.hero-glitch-artifact {
+  position: absolute;
+  pointer-events: none;
+  z-index: 30;
+  animation: artifact-blink-cyan 2.4s steps(1, end) infinite;
+}
+
+.hero-glitch-artifact.a1 {
+  top: 12%;
+  left: 6%;
+  width: 40px;
+  height: 6px;
+  background: rgba(0, 255, 255, 0.8);
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.9);
+  animation: artifact-blink-cyan 3.7s steps(1, end) infinite;
+}
+
+.hero-glitch-artifact.a2 {
+  top: 32%;
+  right: 5%;
+  width: 14px;
+  height: 14px;
+  background: rgba(255, 0, 255, 0.75);
+  box-shadow: 0 0 10px rgba(255, 0, 255, 0.9);
+  animation: artifact-blink-magenta 2.1s steps(1, end) infinite;
+  animation-delay: -0.7s;
+}
+
+.hero-glitch-artifact.a3 {
+  bottom: 18%;
+  left: 2%;
+  width: 24px;
+  height: 4px;
+  background: rgba(255, 255, 0, 0.85);
+  box-shadow: 0 0 8px rgba(255, 255, 0, 0.9);
+  animation: artifact-blink-yellow 4.4s steps(1, end) infinite;
+}
+
+.hero-glitch-artifact.a4 {
+  bottom: 28%;
+  right: 8%;
+  width: 8px;
+  height: 20px;
+  background: rgba(0, 255, 255, 0.7);
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.85);
+  animation: artifact-blink-cyan 1.9s steps(1, end) infinite;
+  animation-delay: -1.2s;
+}
+
+.hero-glitch-artifact.a5 {
+  top: 56%;
+  left: 4%;
+  width: 16px;
+  height: 4px;
+  background: rgba(255, 0, 255, 0.8);
+  box-shadow: 0 0 8px rgba(255, 0, 255, 0.9);
+  animation: artifact-blink-magenta 3.3s steps(1, end) infinite;
+  animation-delay: -2s;
+}
+
+/* Make sidebars position:relative so pseudo-element artifacts work */
+.left-sidebar,
+.right-sidebar {
+  position: relative;
+}
